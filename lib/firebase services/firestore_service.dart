@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mrcci_ec/models/meetings.dart';
 
 class FirestoreService {
   final String uid;
@@ -15,6 +16,15 @@ class FirestoreService {
     try {
       Stream meetings = await meetingCollection.snapshots();
       return meetings;
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  Future getSingleMeeting(String meetingID) async {
+    try {
+      var singleMeeting = await meetingCollection.doc(meetingID).get();
+      return Meeting.fromData(singleMeeting.data());
     } catch (e) {
       return e.message;
     }
