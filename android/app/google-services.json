@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "422734855257",
+    "firebase_url": "https://mrcci-ec.firebaseio.com",
+    "project_id": "mrcci-ec",
+    "storage_bucket": "mrcci-ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422734855257:android:26beff76520d027eaf0548",
+        "android_client_info": {
+          "package_name": "com.i4b.mrcci_ec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422734855257-s1q0tp67grvrpk9uqaj3gq7vja4ul11c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXHIgodXpoyuQNeASqDqvDMzyoi0ZKXH0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422734855257-s1q0tp67grvrpk9uqaj3gq7vja4ul11c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422734855257:android:f53fab9ac4444e0eaf0548",
+        "android_client_info": {
+          "package_name": "com.mrcci.nextech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422734855257-s1q0tp67grvrpk9uqaj3gq7vja4ul11c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXHIgodXpoyuQNeASqDqvDMzyoi0ZKXH0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422734855257-s1q0tp67grvrpk9uqaj3gq7vja4ul11c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
