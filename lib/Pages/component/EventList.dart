@@ -1,24 +1,41 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:mrcci_ec/Pages/component/Detail%20View/event_detail.dart';
 import 'package:mrcci_ec/Pages/component/Detail%20View/meeting_detail.dart';
 import 'package:mrcci_ec/constants/shared_values.dart';
 import 'package:mrcci_ec/firebase%20services/firestore_service.dart';
 
-class MeetingList extends StatelessWidget {
+class EventList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    CollectionReference meetings =
-        FirebaseFirestore.instance.collection('meetings');
+    print('Event List :  $kCurrentUserID ');
+
+    CollectionReference events =
+        FirebaseFirestore.instance.collection('events');
 
     return StreamBuilder<QuerySnapshot>(
-      stream: meetings.snapshots(),
+      stream: events.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return Text('Something went wrong');
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
+          return Center(
+              child: SpinKitDoubleBounce(
+            color: Colors.blue,
+            size: 20,
+          ));
+        }
+
+        if (snapshot.connectionState == ConnectionState.none) {
+          return Center(
+            child: Text(
+              'Connect to the Internet',
+              style: TextStyle(fontSize: 18),
+            ),
+          );
         }
 
         return new ListView(
@@ -28,8 +45,8 @@ class MeetingList extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MeetingDetailView(
-                      meeting: document,
+                    builder: (context) => EventDetailView(
+                      event: document,
                     ),
                   ),
                 );
@@ -108,15 +125,6 @@ class MeetingList extends StatelessWidget {
                                     document.data()['time'].toString(),
                                   ),
                                   SizedBox(width: 10.0),
-                                  Icon(
-                                    Icons.people,
-                                    size: 20.0,
-                                    color: Colors.blue,
-                                  ),
-                                  SizedBox(width: 5.0),
-                                  Text(
-                                    document.data()['role'].toString(),
-                                  ),
                                 ],
                               ),
                             ],
@@ -132,10 +140,3 @@ class MeetingList extends StatelessWidget {
     );
   }
 }
-
-// document.data()['photoUrl'] != null
-//                                 ? Image.network(
-//                                     document.data()['photoUrl'],
-//                                     fit: BoxFit.cover,
-//                                   )
-//                                 : Image.asset('assets/images/meeting.jpeg'),

@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:mrcci_ec/firebase%20services/firestore_service.dart';
 import 'package:mrcci_ec/models/meetings.dart';
 
-class MeetingDetailView extends StatefulWidget {
+class EventDetailView extends StatefulWidget {
   @override
-  _MeetingDetailViewState createState() => _MeetingDetailViewState();
-  DocumentSnapshot meeting;
-  MeetingDetailView({this.meeting});
+  EventDetailViewState createState() => EventDetailViewState();
+  DocumentSnapshot event;
+  EventDetailView({this.event});
 }
 
-class _MeetingDetailViewState extends State<MeetingDetailView>
+class EventDetailViewState extends State<EventDetailView>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
   ScrollController _scrollController;
@@ -20,7 +20,6 @@ class _MeetingDetailViewState extends State<MeetingDetailView>
     super.initState();
     _tabController = TabController(vsync: this, length: 2);
     _scrollController = ScrollController();
-    
   }
 
   @override
@@ -47,8 +46,8 @@ class _MeetingDetailViewState extends State<MeetingDetailView>
                 background: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    RecipeImage(widget.meeting.data()['photoUrl']),
-                    RecipeTitle(widget.meeting.data(), 20.0),
+                    RecipeImage(widget.event.data()['photoUrl']),
+                    RecipeTitle(widget.event.data(), 20.0),
                   ],
                 ),
               ),
@@ -67,7 +66,7 @@ class _MeetingDetailViewState extends State<MeetingDetailView>
                   ),
                   Tab(
                     child: Text(
-                      'Notes',
+                      'Presenters',
                       style: TextStyle(color: Colors.black),
                     ),
                   ),
@@ -79,8 +78,8 @@ class _MeetingDetailViewState extends State<MeetingDetailView>
         },
         body: TabBarView(
           children: <Widget>[
-            IngredientsView(widget.meeting.data()['description']),
-            PreparationView(widget.meeting.data()['note']),
+            IngredientsView(widget.event.data()['description']),
+            PreparationView(widget.event.data()['presenters']),
           ],
           controller: _tabController,
         ),
