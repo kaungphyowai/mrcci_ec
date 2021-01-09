@@ -13,6 +13,16 @@ class Auth {
   Future signout() async {
     _auth.signOut();
   }
+
+  Future signUp() async {
+    try {
+      var result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      if (result != null) {}
+    } catch (e) {
+      print(e);
+    }
+  }
   // Future signIn(String email, String pass) async {
   //   load = true;
   //   var result = await _authenticationService.loginWithEmail(
